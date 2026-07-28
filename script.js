@@ -182,6 +182,24 @@ send.addEventListener("click", () => {
 
     }
 
+    emailjs.send("default", "template_7pqx80i", {
+    date: date,
+    time: heure,
+    message: message === "" ? "Aucun message ❤️" : message,
+    to_name: "Leandra"
+})
+        
+.then(function () {
+    
+    console.log("Email envoyé ❤️");
+    
+})
+        
+.catch(function (error) {
+    
+    console.error("Erreur :", error);
+});
+    
     datePage.style.display="none";
 
     finalPage.style.display="flex";
