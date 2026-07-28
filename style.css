@@ -200,13 +200,35 @@ font-weight:600;
 }
 
 input,
+select,
 textarea{
 
 padding:15px;
 border-radius:15px;
-border:2px solid pink;
+border:2px solid #ffb6c1;
 font-size:17px;
 outline:none;
+background:white;
+font-family:'Poppins',sans-serif;
+width:100%;
+
+}
+select{
+
+cursor:pointer;
+
+}
+
+select:hover{
+
+border-color:#ff5f95;
+
+}
+
+select:focus{
+
+border-color:#ff5f95;
+box-shadow:0 0 10px rgba(255,95,149,.3);
 
 }
 
