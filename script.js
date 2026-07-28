@@ -182,7 +182,7 @@ send.addEventListener("click", () => {
 
     }
 
-    emailjs.send("default", "template_7pqx80i", {
+    emailjs.send("service_aaleks7", "template_7pqx80i", {
     date: date,
     time: heure,
     message: message === "" ? "Aucun message ❤️" : message,
