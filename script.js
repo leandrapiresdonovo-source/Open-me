@@ -244,7 +244,7 @@ send.addEventListener("click", () => {
 
     if (typeof emailjs !== "undefined") {
 
-        emailjs.send("service_aaleks7", "template_uxro395", {
+        emailjs.send("service_aaleks7", "template_ui1lnfr", {
             date: date,
             time: heure,
             message: message === "" ? "Aucun message ❤️" : message,
