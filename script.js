@@ -1,40 +1,294 @@
-// =============================
-// RÉCUPÉRATION DES ÉLÉMENTS
-// =============================
-
-const welcome = document.getElementById("welcome");
+ = document.getElementById("welcome");
 const letterPage = document.getElementById("letterPage");
 const datePage = document.getElementById("datePage");
 const finalPage = document.getElementById("finalPage");
-
+ 
 const openLetter = document.getElementById("openLetter");
-
+ 
 const typing = document.getElementById("typing");
-
+ 
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-
+ 
 const send = document.getElementById("send");
-
+ 
 const dateSelect = document.getElementById("date");
 const timeSelect = document.getElementById("time");
 const messageInput = document.getElementById("message");
-
+ 
 const finalTitle = document.querySelector("#finalPage h1");
 const finalText = document.querySelector("#finalPage p");
-
+ 
 // =============================
 // TEXTE DE LA LETTRE
 // =============================
-
+ 
 const letterText = `Pour Baby ❤️
-
+ 
 Depuis quelque temps...
-
+ 
 Je me suis rendu compte que les meilleurs moments sont ceux passés avec toi.
-
+ 
 Tu me fais sourire sans t'en rendre compte.
-
+ 
+Alors j'aimerais te poser une petite question...
+ 
+Accepterais-tu un petit date avec moi ? 🥹❤️`;
+ 
+let charIndex = 0;
+ 
+// =============================
+// MACHINE À ÉCRIRE
+// =============================
+ 
+function typeWriter(){
+ 
+    if(charIndex < letterText.length){
+ 
+        if(letterText.charAt(charIndex) === "\n"){
+            typing.innerHTML += "<br>";
+        }else{
+            typing.innerHTML += letterText.charAt(charIndex);
+        }
+ 
+        charIndex++;
+ 
+        setTimeout(typeWriter,35);
+ 
+    }
+ 
+}
+ 
+// =============================
+// OUVERTURE DE LA LETTRE
+// =============================
+ 
+openLetter.addEventListener("click",()=>{
+ 
+    welcome.style.opacity="0";
+ 
+    setTimeout(()=>{
+ 
+        welcome.style.display="none";
+ 
+        letterPage.style.display="flex";
+ 
+        typing.innerHTML="";
+ 
+        charIndex=0;
+ 
+        typeWriter();
+ 
+    },500);
+ 
+});
+ 
+// =============================
+// BOUTON NON 😂
+// =============================
+ 
+const noMessages = [
+    "Non 😔",
+    "Vraiment ? 🥺",
+    "Tu es sûre ? 😢",
+    "Réfléchis encore...",
+    "S'il te plaît 🥹",
+    "Ça me rend triste 💔",
+    "Ça ne sert à rien de dire non 😏",
+    "Je sais que tu vas dire oui ❤️",
+    "Allez Baby 🥹",
+    "Bon... j'abandonne 😂"
+];
+ 
+let noClick = 0;
+let yesScale = 1;
+let noScale = 1;
+ 
+noBtn.addEventListener("click", () => {
+ 
+    if(noClick < noMessages.length){
+        noBtn.innerHTML = noMessages[noClick];
+    }
+ 
+    noClick++;
+ 
+    yesScale += 0.15;
+    yesBtn.style.transform = `scale(${yesScale})`;
+ 
+    noScale -= 0.08;
+    noBtn.style.transform = `scale(${Math.max(noScale,0.25)})`;
+ 
+    if(noClick >= 5){
+        moveNoButton();
+    }
+ 
+});
+ 
+// Le bouton fuit la souris une fois qu'on a assez insisté
+function moveNoButton(){
+ 
+    const x = Math.random() * (window.innerWidth - 180);
+    const y = Math.random() * (window.innerHeight - 80);
+ 
+    noBtn.style.position = "fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+    noBtn.style.zIndex = "9999";
+ 
+}
+ 
+noBtn.addEventListener("mouseenter", () => {
+ 
+    if(noClick >= 5){
+        moveNoButton();
+    }
+ 
+});
+ 
+// =============================
+// BOUTON OUI ❤️
+// =============================
+ 
+yesBtn.addEventListener("click", () => {
+ 
+    createHearts();
+ 
+    setTimeout(() => {
+ 
+        letterPage.style.display = "none";
+ 
+        datePage.style.display = "flex";
+        datePage.style.opacity = "0";
+ 
+        setTimeout(() => {
+            datePage.style.opacity = "1";
+        }, 50);
+ 
+    }, 800);
+ 
+});
+ 
+// =============================
+// VALIDATION DU RENDEZ-VOUS
+// =============================
+ 
+send.addEventListener("click", () => {
+ 
+    if (dateSelect.value === "") {
+        alert("🥹 Choisis une date ❤️");
+        return;
+    }
+ 
+    if (timeSelect.value === "") {
+        alert("🥹 Choisis une heure ❤️");
+        return;
+    }
+ 
+    const date = dateSelect.value;
+    const heure = timeSelect.value;
+    const message = messageInput.value.trim();
+ 
+    finalTitle.innerHTML = "🎉 C'EST UN OUIIIII ❤️";
+ 
+    if(message !== ""){
+ 
+        finalText.innerHTML = `
+        ❤️ Notre petit date est prévu le <b>${date}</b> à <b>${heure}</b>.<br><br>
+ 
+        💌 Ton petit message :<br>
+        <i>"${message}"</i><br><br>
+ 
+        J'ai tellement hâte de te voir Baby 🥹❤️
+        `;
+ 
+    }else{
+ 
+        finalText.innerHTML = `
+        ❤️ Notre petit date est prévu le <b>${date}</b> à <b>${heure}</b>.<br><br>
+ 
+        J'ai tellement hâte de te voir Baby 🥹❤️
+        `;
+ 
+    }
+ 
+    // Envoi de l'email (nécessite que le SDK EmailJS soit chargé dans le HTML, voir remarque)
+    if (typeof emailjs !== "undefined") {
+ 
+        emailjs.send("service_aaleks7", "template_7pqx80i", {
+            date: date,
+            time: heure,
+            message: message === "" ? "Aucun message ❤️" : message,
+            to_name: "Leandra"
+        })
+        .then(function () {
+            console.log("Email envoyé ❤️");
+        })
+        .catch(function (error) {
+            console.error("Erreur :", error);
+        });
+ 
+    } else {
+        console.warn("EmailJS n'est pas chargé : l'email n'a pas été envoyé.");
+    }
+ 
+    datePage.style.display = "none";
+    finalPage.style.display = "flex";
+ 
+    createHearts();
+    setTimeout(createHearts, 500);
+    setTimeout(createHearts, 1200);
+ 
+});
+ 
+// =============================
+// CŒURS
+// =============================
+ 
+function createHearts(){
+ 
+    const container = document.getElementById("hearts");
+ 
+    for(let i = 0; i < 80; i++){
+ 
+        const heart = document.createElement("div");
+ 
+        heart.className = "heart";
+        heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "-50px";
+        heart.style.fontSize = (18 + Math.random() * 28) + "px";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+ 
+        container.appendChild(heart);
+ 
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+ 
+    }
+ 
+}
+ 
+// Petits cœurs qui tombent en permanence
+setInterval(() => {
+ 
+    const container = document.getElementById("hearts");
+    const heart = document.createElement("div");
+ 
+    heart.className = "heart";
+    heart.innerHTML = "💕";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "-20px";
+    heart.style.fontSize = (16 + Math.random() * 18) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 4) + "s";
+ 
+    container.appendChild(heart);
+ 
+    setTimeout(() => {
+        heart.remove();
+    }, 9000);
+ 
+}, 700)
 Alors j'aimerais te poser une petite question...
 
 Accepterais-tu un petit date avec moi ? 🥹❤️`;
