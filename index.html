@@ -1,224 +1,194 @@
 <!DOCTYPE html>
+
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Pour Baby ❤️</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
 <!-- Pluie de pétales / cœurs -->
+
 <div id="hearts"></div>
 
 <!-- ========================= -->
+
 <!-- PAGE D'ACCUEIL -->
+
 <!-- ========================= -->
+
 <section id="welcome">
+
   <img src="background.jpg" class="background">
+
   <div class="overlay"></div>
+
   <div class="welcomeCard">
 
     <!-- Enveloppe animée -->
+
     <div class="envelope" id="envelope">
+
       <div class="envelope-back"></div>
+
       <div class="envelope-front"></div>
+
       <div class="envelope-flap"></div>
+
       <div class="seal"></div>
+
     </div>
 
     <h1>Pour Baby ❤️</h1>
+
     <p>
+
       Avant que tu continues...
+
       J'ai une petite surprise pour toi 🥹
+
     </p>
+
     <button id="openLetter">Ouvrir la lettre ❤️</button>
+
   </div>
+
 </section>
 
 <!-- ========================= -->
+
 <!-- LETTRE -->
+
 <!-- ========================= -->
+
 <section id="letterPage">
+
   <div class="letter">
+
     <h2>Pour Baby ❤️</h2>
+
     <p id="typing"></p>
+
     <div class="buttons">
+
       <button id="yesBtn">Ouiii ❤️</button>
+
       <button id="noBtn">Non 😶</button>
+
     </div>
+
   </div>
+
 </section>
 
 <!-- ========================= -->
+
 <!-- CHOIX DU RENDEZ-VOUS -->
+
 <!-- ========================= -->
+
 <section id="datePage">
+
   <div class="card">
-<div class="mail">
 
-💌
+    <h2>🥹 Tu as accepté ❤️</h2>
 
-</div>
+    <img src="together.jpg" class="photo">
 
-<h1>Pour Baby ❤️</h1>
+    <label>📅 Choisis une date</label>
 
-<p>
+    <select id="date">
 
-J'ai préparé une petite surprise...
+      <option value="">-- Choisir --</option>
 
-</p>
+      <option value="2 août">2 août</option>
 
-<button id="openLetter">
+      <option value="8 août">8 août</option>
 
-Ouvrir la lettre
+      <option value="9 août">9 août</option>
 
-</button>
+    </select>
 
-</div>
+    <label>🕒 Choisis une heure</label>
 
-</section>
+    <select id="time">
 
-<!-- ========================= -->
-<!-- PAGE 2 -->
-<!-- ========================= -->
+      <option value="">-- Choisir --</option>
 
-<section id="letterPage">
+      <option>15h00</option>
 
-<div class="letter">
+      <option>15h30</option>
 
-<h2>Pour Baby ❤️</h2>
+      <option>16h00</option>
 
-<p id="typing"></p>
+      <option>16h30</option>
 
-<div class="buttons">
+      <option>17h00</option>
 
-<button id="yesBtn">
+      <option>17h30</option>
 
-Ouiii ❤️
+      <option>18h00</option>
 
-</button>
+      <option>18h30</option>
 
-<button id="noBtn">
+      <option>19h00</option>
 
-Non 😶
+    </select>
 
-</button>
+    <label>💌 Un petit mot ? (facultatif)</label>
 
-</div>
+    <textarea id="message" rows="5" placeholder="Écris ce que tu veux ❤️"></textarea>
 
-</div>
+    <button id="send">Valider ❤️</button>
 
-</section>
-
-<!-- ========================= -->
-<!-- PAGE 3 -->
-<!-- ========================= -->
-
-<section id="datePage">
-
-<div class="card">
-
-<h2>
-
-🥹 Tu as accepté ❤️
-
-</h2>
-
-<img src="together.jpg" class="photo">
-
-<label>
-
-📅 Choisis une date
-
-</label>
-
-<select id="date">
-
-<option value="">-- Choisir --</option>
-
-<option value="2 août">2 août</option>
-
-<option value="8 août">8 août</option>
-
-<option value="9 août">9 août</option>
-
-</select>
-
-<label>
-
-🕒 Choisis une heure
-
-</label>
-
-<select id="time">
-
-<option value="">-- Choisir --</option>
-
-<option>15h00</option>
-<option>15h30</option>
-<option>16h00</option>
-<option>16h30</option>
-<option>17h00</option>
-<option>17h30</option>
-<option>18h00</option>
-<option>18h30</option>
-<option>19h00</option>
-
-</select>
-
-<label>
-
-💌 Un petit mot ? (facultatif)
-
-</label>
-
-<textarea id="message" rows="5"></textarea>
-
-<button id="send">
-
-Valider ❤️
-
-</button>
-
-</div>
+  </div>
 
 </section>
 
 <!-- ========================= -->
-<!-- PAGE 4 -->
+
+<!-- PAGE FINALE -->
+
 <!-- ========================= -->
 
 <section id="finalPage">
 
-<div class="cardFinal">
+  <div class="cardFinal">
 
-<h1>
+    <h1>🎉 C'EST UN OUIIIII ❤️</h1>
 
-❤️ Merci Baby ❤️
+    <img src="together.jpg" class="photoFinal">
 
-</h1>
+    <p>J'ai tellement hâte de partager ce moment avec toi 🥹❤️</p>
 
-<img src="together.jpg" class="photoFinal">
+    <p class="countdown" id="countdown"></p>
 
-<p>
+    <div class="love">❤️ ❤️ ❤️</div>
 
-J'ai tellement hâte de partager ce moment avec toi 🥹❤️
-
-</p>
-
-<div class="love">
-
-❤️ ❤️ ❤️
-
-</div>
-
-</div>
+  </div>
 
 </section>
+
+<!-- ========================= -->
+
+<!-- SCRIPTS -->
+
+<!-- ========================= -->
 
 <!-- EmailJS -->
 
@@ -226,11 +196,11 @@ J'ai tellement hâte de partager ce moment avec toi 🥹❤️
 
 <script>
 
-emailjs.init({
+  emailjs.init({
 
-publicKey: "Vpel2jP4va1Jcl3N-"
+    publicKey: "Vpel2jP4va1Jcl3N-"
 
-});
+  });
 
 </script>
 
