@@ -1,40 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Pour Baby ❤️</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
-<!-- Cœurs -->
-
+<!-- Pluie de pétales / cœurs -->
 <div id="hearts"></div>
 
 <!-- ========================= -->
-<!-- PAGE 1 -->
+<!-- PAGE D'ACCUEIL -->
 <!-- ========================= -->
-
 <section id="welcome">
+  <img src="background.jpg" class="background">
+  <div class="overlay"></div>
+  <div class="welcomeCard">
 
-<img src="background.jpg" class="background">
+    <!-- Enveloppe animée -->
+    <div class="envelope" id="envelope">
+      <div class="envelope-back"></div>
+      <div class="envelope-front"></div>
+      <div class="envelope-flap"></div>
+      <div class="seal"></div>
+    </div>
 
-<div class="overlay"></div>
+    <h1>Pour Baby ❤️</h1>
+    <p>
+      Avant que tu continues...
+      J'ai une petite surprise pour toi 🥹
+    </p>
+    <button id="openLetter">Ouvrir la lettre ❤️</button>
+  </div>
+</section>
 
-<div class="welcomeCard">
+<!-- ========================= -->
+<!-- LETTRE -->
+<!-- ========================= -->
+<section id="letterPage">
+  <div class="letter">
+    <h2>Pour Baby ❤️</h2>
+    <p id="typing"></p>
+    <div class="buttons">
+      <button id="yesBtn">Ouiii ❤️</button>
+      <button id="noBtn">Non 😶</button>
+    </div>
+  </div>
+</section>
 
+<!-- ========================= -->
+<!-- CHOIX DU RENDEZ-VOUS -->
+<!-- ========================= -->
+<section id="datePage">
+  <div class="card">
 <div class="mail">
 
 💌
