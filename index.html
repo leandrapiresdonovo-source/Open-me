@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 
 <meta charset="UTF-8">
@@ -10,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -18,39 +19,55 @@
 
 <body>
 
+<!-- Cœurs -->
+
 <div id="hearts"></div>
 
-<!-- PAGE D'ACCUEIL -->
+<!-- ========================= -->
+<!-- PAGE 1 -->
+<!-- ========================= -->
 
 <section id="welcome">
 
-<div class="overlay"></div>
-
 <img src="background.jpg" class="background">
 
-<div class="center">
+<div class="overlay"></div>
 
-<h1>💌</h1>
+<div class="welcomeCard">
 
-<h2>Une lettre pour Baby</h2>
+<div class="mail">
 
-<p>J'ai quelque chose à te demander...</p>
+💌
+
+</div>
+
+<h1>Pour Baby ❤️</h1>
+
+<p>
+
+J'ai préparé une petite surprise...
+
+</p>
 
 <button id="openLetter">
-Ouvrir ❤️
+
+Ouvrir la lettre
+
 </button>
 
 </div>
 
 </section>
 
-<!-- LETTRE -->
+<!-- ========================= -->
+<!-- PAGE 2 -->
+<!-- ========================= -->
 
 <section id="letterPage">
 
 <div class="letter">
 
-<h1>Pour Baby ❤️</h1>
+<h2>Pour Baby ❤️</h2>
 
 <p id="typing"></p>
 
@@ -64,7 +81,7 @@ Ouiii ❤️
 
 <button id="noBtn">
 
-Non
+Non 😶
 
 </button>
 
@@ -74,47 +91,65 @@ Non
 
 </section>
 
-<!-- DATE -->
+<!-- ========================= -->
+<!-- PAGE 3 -->
+<!-- ========================= -->
 
 <section id="datePage">
 
-<h1>🥹</h1>
+<div class="card">
 
-<h2>Tu m'as rendu super heureuse ❤️</h2>
+<h2>
+
+🥹 Tu as accepté ❤️
+
+</h2>
 
 <img src="together.jpg" class="photo">
 
-<div class="form">
-
 <label>
-📅 Choisis une date ❤️
+
+📅 Choisis une date
+
 </label>
 
 <select id="date">
-    <option value="">-- Choisir une date --</option>
-    <option value="2 août">2 août</option>
-    <option value="8 août">8 août</option>
-    <option value="9 août">9 août</option>
+
+<option value="">-- Choisir --</option>
+
+<option value="2 août">2 août</option>
+
+<option value="8 août">8 août</option>
+
+<option value="9 août">9 août</option>
+
 </select>
 
 <label>
-🕒 Choisis une heure ❤️
+
+🕒 Choisis une heure
+
 </label>
 
 <select id="time">
-    <option value="">-- Choisir une heure --</option>
-    <option value="15h00">15h00</option>
-    <option value="15h30">15h30</option>
-    <option value="16h00">16h00</option>
-    <option value="16h30">16h30</option>
-    <option value="17h00">17h00</option>
-    <option value="17h30">17h30</option>
-    <option value="18h00">18h00</option>
-    <option value="18h30">18h30</option>
-    <option value="19h00">19h00</option>
+
+<option value="">-- Choisir --</option>
+
+<option>15h00</option>
+<option>15h30</option>
+<option>16h00</option>
+<option>16h30</option>
+<option>17h00</option>
+<option>17h30</option>
+<option>18h00</option>
+<option>18h30</option>
+<option>19h00</option>
+
 </select>
 
-💌 Un petit message ? (facultatif)
+<label>
+
+💌 Un petit mot ? (facultatif)
 
 </label>
 
@@ -130,17 +165,25 @@ Valider ❤️
 
 </section>
 
-<!-- FIN -->
+<!-- ========================= -->
+<!-- PAGE 4 -->
+<!-- ========================= -->
 
 <section id="finalPage">
 
-<h1>❤️ Merci Baby ❤️</h1>
+<div class="cardFinal">
+
+<h1>
+
+❤️ Merci Baby ❤️
+
+</h1>
 
 <img src="together.jpg" class="photoFinal">
 
 <p>
 
-J'ai tellement hâte de partager ce moment avec toi 🥹
+J'ai tellement hâte de partager ce moment avec toi 🥹❤️
 
 </p>
 
@@ -150,20 +193,24 @@ J'ai tellement hâte de partager ce moment avec toi 🥹
 
 </div>
 
+</div>
+
 </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<!-- EmailJS -->
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-    
+
 emailjs.init({
-    
-    publicKey: "Vpel2jP4va1Jcl3N-",
+
+publicKey: "Vpel2jP4va1Jcl3N-"
 
 });
-    
+
 </script>
-    
+
 <script src="script.js"></script>
 
 </body>
