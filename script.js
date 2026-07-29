@@ -1,9 +1,14 @@
+// =============================
+// RÉCUPÉRATION DES ÉLÉMENTS
+// =============================
+
 const welcome = document.getElementById("welcome");
 const letterPage = document.getElementById("letterPage");
 const datePage = document.getElementById("datePage");
 const finalPage = document.getElementById("finalPage");
 
 const openLetter = document.getElementById("openLetter");
+
 const typing = document.getElementById("typing");
 
 const yesBtn = document.getElementById("yesBtn");
@@ -18,11 +23,17 @@ const messageInput = document.getElementById("message");
 const finalTitle = document.querySelector("#finalPage h1");
 const finalText = document.querySelector("#finalPage p");
 
+// =============================
+// TEXTE DE LA LETTRE
+// =============================
+
 const letterText = `Pour Baby ❤️
 
 Depuis quelque temps...
 
 Je me suis rendu compte que les meilleurs moments sont ceux passés avec toi.
+
+Tu me fais sourire sans t'en rendre compte.
 
 Alors j'aimerais te poser une petite question...
 
@@ -30,11 +41,51 @@ Accepterais-tu un petit date avec moi ? 🥹❤️`;
 
 let charIndex = 0;
 
+// =============================
+// MACHINE À ÉCRIRE
+// =============================
+
 function typeWriter(){
 
     if(charIndex < letterText.length){
 
         if(letterText.charAt(charIndex) === "\n"){
+            typing.innerHTML += "<br>";
+        }else{
+            typing.innerHTML += letterText.charAt(charIndex);
+        }
+
+        charIndex++;
+
+        setTimeout(typeWriter,35);
+
+    }
+
+}
+
+// =============================
+// OUVERTURE DE LA LETTRE
+// =============================
+
+openLetter.addEventListener("click",()=>{
+
+    welcome.style.opacity="0";
+
+    setTimeout(()=>{
+
+        welcome.style.display="none";
+
+        letterPage.style.display="flex";
+
+        typing.innerHTML="";
+
+        charIndex=0;
+
+        typeWriter();
+
+    },500);
+
+});        if(letterText.charAt(charIndex) === "\n"){
             typing.innerHTML += "<br>";
         }else{
             typing.innerHTML += letterText.charAt(charIndex);
@@ -273,3 +324,103 @@ setInterval(()=>{
     },9000);
 
 },700);
+
+// =============================
+// BOUTON NON 😂
+// =============================
+
+const noMessages = [
+
+"Non 😔",
+"Vraiment ? 🥺",
+"Tu es sûre ? 😢",
+"Réfléchis encore...",
+"S'il te plaît 🥹",
+"Ça me rend triste 💔",
+"Ça ne sert à rien de dire non 😏",
+"Je sais que tu vas dire oui ❤️",
+"Allez Baby 🥹",
+"Bon... j'abandonne 😂"
+
+];
+
+let noClick = 0;
+let yesScale = 1;
+let noScale = 1;
+
+noBtn.addEventListener("click", () => {
+
+    if(noClick < noMessages.length){
+
+        noBtn.innerHTML = noMessages[noClick];
+
+    }
+
+    noClick++;
+
+    yesScale += 0.15;
+
+    yesBtn.style.transform = `scale(${yesScale})`;
+
+    noScale -= 0.08;
+
+    noBtn.style.transform = `scale(${Math.max(noScale,0.25)})`;
+
+    if(noClick >= 5){
+
+        moveNoButton();
+
+    }
+
+});
+
+// Le bouton fuit
+
+function moveNoButton(){
+
+    const x = Math.random() * (window.innerWidth - 180);
+
+    const y = Math.random() * (window.innerHeight - 80);
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+    noBtn.style.zIndex = "9999";
+
+}
+
+noBtn.addEventListener("mouseenter",()=>{
+
+    if(noClick >= 5){
+
+        moveNoButton();
+
+    }
+
+});
+
+// =============================
+// BOUTON OUI ❤️
+// =============================
+
+yesBtn.addEventListener("click",()=>{
+
+    createHearts();
+
+    setTimeout(()=>{
+
+        letterPage.style.display="none";
+
+        datePage.style.display="flex";
+
+        datePage.style.opacity="0";
+
+        setTimeout(()=>{
+
+            datePage.style.opacity="1";
+
+        },50);
+
+    },800);
+
+});
